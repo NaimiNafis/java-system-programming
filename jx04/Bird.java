@@ -34,6 +34,7 @@ public class Bird {
 		System.out.println("Bird: " + Bird.getNum());
 		System.out.println("Chicken: " + Chicken.getNum());
 		System.out.println("Penguin: " + Penguin.getNum());
+		System.out.println(b + "" + c1 + c2 + p1 + p2 + p3);
 
 	}
 

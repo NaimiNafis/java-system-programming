@@ -1,0 +1,22 @@
+
+(1) SELECT Stock.sno, Goods.gno, Goods.gname, Goods.price, Stock.qty, Stock.qty*Goods.price AS total_sale
+	FROM Goods
+	INNER JOIN Stock ON Goods.gno = Stock.gno;
+
+(2) SELECT Stock.sno, Goods.gno, Goods.gname, Goods.price, Stock.qty
+	FROM Goods
+	INNER JOIN Stock ON Goods.gno = Stock.gno
+	ORDER BY  Goods.gno ASC, Stock.qty DESC, Stock.sno ASC;
+
+(3) SELECT Goods.gno, Stock.sno, Goods.gname, Goods.price, Stock.qty, Supplier.priority
+    FROM Goods, Stock, Supplier
+    WHERE Goods.gno = Stock.gno AND Stock.sno = Supplier.sno AND Supplier.priority > 10 AND Stock.qty <= 2;
+
+(4) SELECT p1.pname  AS Parent, p2.pname AS Child, p3.pname AS Grandchild
+	FROM person p1, person p2, person p3
+	WHERE p1.child_name = p2.pname AND p2.child_name = p3.pname;
+
+(5) SELECT gno, gname, price
+    FROM Goods
+    WHERE price > (SELECT price FROM Goods WHERE gno = 'G1');
+

@@ -1,0 +1,32 @@
+-- (1)
+SELECT * FROM Goods
+	WHERE gname LIKE '______';
+
+-- (2)
+SELECT * FROM Goods WHERE color IS NOT NULL AND color != '' AND price > 100;
+
+-- (3)
+SELECT sno, SUM(qty) FROM Stock 
+	GROUP BY sno
+	HAVING SUM(qty) >= 5;
+
+-- (4)
+SELECT gno, SUM(qty) FROM Stock 
+	GROUP BY gno
+	ORDER BY SUM(qty) DESC;
+	
+-- (5)
+SELECT Goods.gno , SUM(Stock.qty)*Goods.price AS profit FROM Goods, Stock 
+	WHERE Stock.gno = Goods.gno
+	GROUP BY Goods.gno
+	HAVING profit >= 500
+	ORDER BY profit DESC;
+	
+-- (6)
+SELECT p1.pname AS Parent, p2.pname AS Child, p3.pname AS Grandchild
+	FROM person p1, person p2, person p3
+	WHERE p1.child_name = p2.pname AND p2.child_name = p3.pname;
+
+-- (7)
+SELECT * FROM Goods
+	WHERE color IN (SELECT color FROM Goods WHERE price BETWEEN 100 AND 200);
